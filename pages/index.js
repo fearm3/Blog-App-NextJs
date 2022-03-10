@@ -2,9 +2,8 @@ import { Fragment } from "react";
 import Head from "next/head";
 
 import FeaturedPosts from "../components/home-page/featured-posts";
-import { getFeaturedPosts } from "../lib/posts-util";
-
 import Hero from "../components/home-page/hero";
+import { getFeaturedPosts } from "../lib/posts-util";
 
 function HomePage(props) {
   return (
@@ -13,7 +12,7 @@ function HomePage(props) {
         <title>Fearm3' Blog</title>
         <meta
           name="description"
-          content="I post programming and web development"
+          content="I post about programming and web development."
         />
       </Head>
       <Hero />
@@ -22,14 +21,13 @@ function HomePage(props) {
   );
 }
 
-export async function getStaticProps() {
+export function getStaticProps() {
   const featuredPosts = getFeaturedPosts();
 
   return {
     props: {
       posts: featuredPosts,
     },
-    revalidate: 60,
   };
 }
 

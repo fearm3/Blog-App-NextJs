@@ -11,7 +11,7 @@ function PostDetailPage(props) {
         <title>{props.post.title}</title>
         <meta name="description" content={props.post.excerpt} />
       </Head>
-      <PostContent post={props.post} />;
+      <PostContent post={props.post} />
     </Fragment>
   );
 }
@@ -33,10 +33,10 @@ export function getStaticProps(context) {
 export function getStaticPaths() {
   const postFilenames = getPostsFiles();
 
-  const slugs = postFilenames.map((fileName) => fileName?.replace(/\.md$/, ""));
+  const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
 
   return {
-    paths: slugs?.map((slug) => ({ params: { slug: slug } })),
+    paths: slugs.map((slug) => ({ params: { slug: slug } })),
     fallback: false,
   };
 }
